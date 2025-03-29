@@ -1,4 +1,12 @@
 / {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        nav_toggler {
+            if-layers = <TOGGLE>;
+            then-layer = <NAV>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -9,7 +17,7 @@
 &kp TAB     &kp Q         &kp W         &kp E           &kp R           &kp T            &kp DOWN_ARROW     &kp Y         &kp U          &kp I              &kp O            &kp P       &kp LEFT_BRACKET
 &kp CAPS    &hrml RALT A  &hrml LALT S  &hrml LSHIFT D  &hrml LCTRL F   &hrml LGUI G     &kp LEFT_ARROW     &hrmr RGUI H  &hrmr RCTRL J  &hrmr RSHIFT K     &hrmr LALT L     &kp SEMI    &kp APOS
 &kp LSHFT   &kp Z         &kp X         &kp C           &kp V           &kp B            &kp RIGHT_ARROW    &kp N         &kp M          &kp COMMA          &kp DOT          &kp FSLH    &tdl
-&kp C_MUTE  &kp LCTRL     &kp LEFT_GUI  &kp LEFT_ALT    &mt LSHFT SPACE &lt NAV ENTER    &kp ENTER          &rep_bk_del   &smart_rshift  &mt NAV BACKSPACE  &kp INSERT       &kp DELETE
+&kp C_MUTE  &kp LCTRL     &kp LEFT_GUI  &kp LEFT_ALT    &mt LSHFT SPACE &lt NAV ENTER    &kp ENTER          &rep_bk_del   &smart_rshift  &lt NAV BACKSPACE  &kp INSERT       &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -34,8 +42,8 @@
 &kp MINUS  &th F10 N0  &th F9 N9  &th F8 N8  &th F7 N7  &th F6 N6           &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &kp P       &kp O      &kp I      &kp U      &kp Y           &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &kp SEMI    &kp L      &kp K      &kp J      &kp H            &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp FSLH    &kp DOT    &kp COMMA  &kp M      &kp N           &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans      &kp LCTRL  &kp LALT   &kp SPACE  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&kp ENTER  &kp FSLH    &kp DOT    &kp COMMA  &kp M      &kp N           &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans      &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -75,7 +83,7 @@
 &kp GRAVE   &kp F1    &kp F2    &kp F3      &kp F4     &kp F5             &mmv MOVE_UP       &kp F6         &kp F7     &kp F8     &kp F9     &kp F10         &kp EQUAL
 &trans      &kp F11   &kp F12   &kp PSCRN   &kp SLCK   &kp PAUSE_BREAK    &mmv MOVE_DOWN     &kp C_AC_COPY  &kp PG_UP  &kmmvu     &kp PG_DN  &kp C_AC_PASTE  &kp RIGHT_BRACKET
 &trans      &sk RALT  &sk LALT  &sk LSHIFT  &sk LCTRL  &sk LGUI           &mmv MOVE_LEFT     &kp C_AC_CUT   &kmmvl     &kmmvd     &kmmvr     &trans          &trans
-&trans      &trans    &trans    &trans      &trans     &trans             &mmv MOVE_RIGHT    &kp C_AC_UNDO  &mkp MCLK  &mkp RCLK  &trans     &kp BSLH        &tog TOGGLE
+&trans      &trans    &trans    &trans      &trans     &trans             &mmv MOVE_RIGHT    &kp C_AC_UNDO  &mkp MCLK  &mkp RCLK  &trans     &kp BSLH        &tog MOVE
 &trans      &trans    &trans    &trans      &trans     &trans             &mkp LCLK          &mkp LCLK      &trans     &trans     &trans     &trans
             >;
 
@@ -84,6 +92,7 @@
 
         toggle_layer {
 	    // Empty layer to allow lower layer to be turned sticky from temporary
+	    display-name = "Move";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
