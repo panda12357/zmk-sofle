@@ -105,7 +105,7 @@
       compatible = "zmk,behavior-mod-morph";
       bindings = <&kp>, <&mmv>;
       mods = <(MOD_RALT)>;
-      #binding-cells = <0>;
+      #binding-cells = <2>;
     };
 
     // tap-hold keep pressed for second key
