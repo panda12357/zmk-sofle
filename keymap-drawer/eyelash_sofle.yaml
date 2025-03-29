@@ -398,10 +398,10 @@ combos:
   k: F12
   l: [Base]
 - p: [0, 13, 26, 39]
-  k: '&rst_boot'
+  k: {t: '$$mdi:backup-restore$$', h: '$$mdi:progress-download$$'}
   l: [Move]
 - p: [12, 25, 38, 51]
-  k: '&rst_boot'
+  k: {t: '$$mdi:backup-restore$$', h: '$$mdi:progress-download$$'}
   l: [Move]
 - p: [0, 13]
   k: {t: '`', s: '~'}
