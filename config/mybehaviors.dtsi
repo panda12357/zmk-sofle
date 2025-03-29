@@ -101,11 +101,29 @@
     - tap: key
     - ralt + tap: mouse move
     */
-    /omit-if-no-ref/ kmmv: key_mouse_move {
+    /omit-if-no-ref/ kmmvl: key_mouse_move_left {
       compatible = "zmk,behavior-mod-morph";
-      bindings = <&kp>, <&mmv>;
+      bindings = <&kp LEFT>, <&mmv MOVE_LEFT>;
       mods = <(MOD_RALT)>;
-      #binding-cells = <2>;
+      #binding-cells = <0>;
+    };
+    /omit-if-no-ref/ kmmvr: key_mouse_move_right {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp RIGHT>, <&mmv MOVE_RIGHT>;
+      mods = <(MOD_RALT)>;
+      #binding-cells = <0>;
+    };
+    /omit-if-no-ref/ kmmvu: key_mouse_move_up {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp UP>, <&mmv MOVE_UP>;
+      mods = <(MOD_RALT)>;
+      #binding-cells = <0>;
+    };
+    /omit-if-no-ref/ kmmvd: key_mouse_move_down {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp DOWN>, <&mmv MOVE_DOWN>;
+      mods = <(MOD_RALT)>;
+      #binding-cells = <0>;
     };
 
     // tap-hold keep pressed for second key

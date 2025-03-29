@@ -72,11 +72,11 @@
         navigation_function_layer {
 	    display-name = "Move";
             bindings = <
-&kp GRAVE   &kp F1    &kp F2    &kp F3      &kp F4     &kp F5             &mmv MOVE_UP       &kp F6         &kp F7                &kp F8                &kp F9                  &kp F10         &kp EQUAL
-&trans      &kp F11   &kp F12   &kp PSCRN   &kp SLCK   &kp PAUSE_BREAK    &mmv MOVE_DOWN     &kp C_AC_COPY  &kp PG_UP             &kmmv UP MOVE_UP      &kp PG_DN               &kp C_AC_PASTE  &kp RIGHT_BRACKET
-&trans      &sk RALT  &sk LALT  &sk LSHIFT  &sk LCTRL  &sk LGUI           &mmv MOVE_LEFT     &kp C_AC_CUT   &kmmv LEFT MOVE_LEFT  &kmmv DOWN MOVE_DOWN  &kmmv RIGHT MOVE_RIGHT  &trans          &trans
-&trans      &trans    &trans    &trans      &trans     &trans             &mmv MOVE_RIGHT    &kp C_AC_UNDO  &mkp MCLK             &mkp RCLK             &trans                  &kp BSLH        &trans
-&trans      &trans    &trans    &trans      &trans     &trans             &mkp LCLK          &mkp LCLK      &trans                &trans                &trans                  &tog TOGGLE
+&kp GRAVE   &kp F1    &kp F2    &kp F3      &kp F4     &kp F5             &mmv MOVE_UP       &kp F6         &kp F7     &kp F8     &kp F9     &kp F10         &kp EQUAL
+&trans      &kp F11   &kp F12   &kp PSCRN   &kp SLCK   &kp PAUSE_BREAK    &mmv MOVE_DOWN     &kp C_AC_COPY  &kp PG_UP  &kmmvu     &kp PG_DN  &kp C_AC_PASTE  &kp RIGHT_BRACKET
+&trans      &sk RALT  &sk LALT  &sk LSHIFT  &sk LCTRL  &sk LGUI           &mmv MOVE_LEFT     &kp C_AC_CUT   &kmmvl     &kmmvd     &kmmvr     &trans          &trans
+&trans      &trans    &trans    &trans      &trans     &trans             &mmv MOVE_RIGHT    &kp C_AC_UNDO  &mkp MCLK  &mkp RCLK  &trans     &kp BSLH        &tog TOGGLE
+&trans      &trans    &trans    &trans      &trans     &trans             &mkp LCLK          &mkp LCLK      &trans     &trans     &trans     &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
