@@ -278,7 +278,7 @@ layers:
   - F11
   - F12
   - $$mdi:printer-outline$$
-  - SLCK
+  - SCROLLLOCK
   - PAUSE BREAK
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - AC COPY
