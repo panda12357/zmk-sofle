@@ -25,8 +25,8 @@
     COMBO(f12      , &kp F12      , 1 2    , BASE     , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
 
     /* System */
-    COMBO(rst_boot_l , &rst_boot  ,  0 13 26 39 , NAV , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
-    COMBO(rst_boot_r , &rst_boot  , 12 25 38 51 , NAV , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
+    COMBO(rst_boot_l , &rst_boot 0 0 ,  0 13 26 39 , NAV , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
+    COMBO(rst_boot_r , &rst_boot 0 0 , 12 25 38 51 , NAV , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
 
     /* Symbols */
     // Left high
