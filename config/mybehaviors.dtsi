@@ -111,7 +111,6 @@
     // tap-hold keep pressed for second key
     /omit-if-no-ref/ th: th {
       compatible = "zmk,behavior-hold-tap";
-      label = "TH";
       bindings = <&kp>, <&kp>;
       #binding-cells = <2>;
       flavor = "tap-preferred";

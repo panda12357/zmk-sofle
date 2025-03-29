@@ -38,7 +38,7 @@
 &trans     &trans      &kp LCTRL  &kp LALT   &kp SPACE  &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&trans>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
         };
 
         keypad_layer {
@@ -51,7 +51,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans    &sk RALT     &trans     &trans        &trans      &trans
             >;
 
-            sensor-bindings = <&trans>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
         };
 
 	// Mouse and arrows together, with also keys for copy/paste, right hand only layer
@@ -92,7 +92,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&trans>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
     };
