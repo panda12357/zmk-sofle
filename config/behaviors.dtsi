@@ -1,0 +1,298 @@
+// ZMK Behaviors Configuration
+// Mouse
+&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; }; // double mouse speed
+
+&mmv {
+    time-to-max-speed-ms = <500>;
+    acceleration-exponent = <1>;
+    trigger-period-ms = <16>;
+};
+
+&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; }; // double mouse scroll speed
+
+&msc {
+    acceleration-exponent = <1>;      // 0
+    time-to-max-speed-ms = <100>;       // 300
+    delay-ms = <0>;                   // 0
+};
+
+// shamelessly copied from https://github.com/minusfive/zmk-config
+// mod-tap, key on tap, modifier on held
+&mt {
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+  require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+};
+
+// layer-tap, key on tap, layer on held
+&lt {
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+  require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+};
+
+// sticky key
+&sk {
+  //release-after-ms = <900>; // default release is 1000ms
+  quick-release;
+};
+
+// mods deactivate caps-word, requires PR https://github.com/zmkfirmware/zmk/pull/1451
+// &caps_word {
+//   /delete-property/ ignore-modifiers;
+// };
+
+// From: https://github.com/urob/zmk-config/
+// num-word, requires PR https://github.com/zmkfirmware/zmk/pull/1451
+// Adds arrows and shift to smart layer for more comfortable navigation/selection moves
+&num_word {
+  continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL RSHFT LEFT RIGHT UP DOWN>;
+};
+
+/ {
+  behaviors {
+    /omit-if-no-ref/ scroll_encoder: scroll_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        tap-ms = <100>;
+    };
+
+    behaviors {
+      tdl: tap_dance_layers {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&tog NUM>, <&to GAME>, <&to BASE>;
+      };
+    };
+
+    /*
+    - tap: key_repeat
+    - hold: repeat key_repeat
+    - shift + tap: backspace
+    - shift + hold: repeat backspace
+    - ralt + tap: delete
+    - ralt + hold: repeat delete
+    */
+    /omit-if-no-ref/ rep_bk_del: replay_backspace_delete {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&rep_bk>, <&kp DELETE>;
+      mods = <(MOD_RALT)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: key_repeat
+    - hold: repeat key_repeat
+    - shift + tap: backspace
+    - shift + hold: repeat backspace
+    */
+    /omit-if-no-ref/ rep_bk: replay_backspace {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&key_repeat>, <&kp BACKSPACE>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: key
+    - ralt + tap: mouse move
+    */
+    /omit-if-no-ref/ kmmv: key_mouse_move {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp>, <&mmv>;
+      mods = <(MOD_RALT)>;
+      #binding-cells = <0>;
+    };
+
+    // tap-hold keep pressed for second key
+    /omit-if-no-ref/ th: th {
+      compatible = "zmk,behavior-hold-tap";
+      label = "TH";
+      bindings = <&kp>, <&kp>;
+      #binding-cells = <2>;
+      flavor = "tap-preferred";
+      tapping-term-ms = <300>;
+    };
+
+    /*
+    Home Row Mods
+
+    - tap: &kp <PARAM_2>
+    - hold: &kp <PARAM_1>
+
+    Example: &hrml LCMD T
+    */
+    /omit-if-no-ref/ hrml: hrm_left {
+      bindings = <&kp>, <&kp>;
+      compatible = "zmk,behavior-hold-tap";
+      flavor = "balanced";
+      hold-trigger-key-positions = <KEYS_R THUMBS>;
+      hold-trigger-on-release;
+      tapping-term-ms = <TAPPING_TERM_MS>;
+      quick-tap-ms = <QUICK_TAP_MS>;
+      require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+      #binding-cells = <2>;
+    };
+    /omit-if-no-ref/ hrmr: hrm_right {
+      bindings = <&kp>, <&kp>;
+      compatible = "zmk,behavior-hold-tap";
+      flavor = "balanced";
+      hold-trigger-key-positions = <KEYS_L THUMBS>;
+      hold-trigger-on-release;
+      tapping-term-ms = <TAPPING_TERM_MS>;
+      quick-tap-ms = <QUICK_TAP_MS>;
+      require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+      #binding-cells = <2>;
+    };
+
+    /*
+    - tap: sticky shift
+    - double-tap: caps-word (shift + tap mod-morph)
+    - hold: shift
+
+    From: https://github.com/urob/zmk-config/
+    */
+    /omit-if-no-ref/ smart_rshift: smart_rshift {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&sk RSHFT>, <&caps_word>;
+      mods = <(MOD_RSFT)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: sticky shift
+    - double-tap: caps-word (shift + tap mod-morph)
+    - hold: shift
+    */
+    /omit-if-no-ref/ smart_lshift: smart_lshift {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&sk LSHFT>, <&caps_word>;
+      mods = <(MOD_LSFT)>;
+      #binding-cells = <0>;
+    };
+
+
+    /*
+    - tap: num-word
+    - hold: &mo layer
+
+    From: https://github.com/urob/zmk-config/
+    */
+    /omit-if-no-ref/ smart_num: smart_num {
+      compatible = "zmk,behavior-hold-tap";
+      flavor = "balanced";
+      tapping-term-ms = <TAPPING_TERM_MS>;
+      bindings = <&mo>, <&num_dance>;
+      #binding-cells = <2>;
+    };
+
+    /*
+    - tap: &sl NUM
+    - tap x 2: &num_word
+
+    From: https://github.com/urob/zmk-config/
+    */
+    /omit-if-no-ref/ num_dance: num_dance {
+      compatible = "zmk,behavior-tap-dance";
+      tapping-term-ms = <TAPPING_TERM_MS>;
+      bindings = <&sl NUM>, <&num_word NUM>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: &kp <PARAM_2>
+    - hold: &none
+
+    Example: &nh 0 K_CANCEL
+    */
+    /omit-if-no-ref/ nh: no_hold {
+      compatible = "zmk,behavior-hold-tap";
+      flavor = "balanced";
+      tapping-term-ms = <TAPPING_TERM_MS>;
+      bindings = <&none>, <&kp>;
+      #binding-cells = <2>;
+    };
+
+    /*
+    - tap: sticky ctrl
+    - hold: ctrl
+    - double-tap: sticky meh (ctrl + tap mod-morph)
+    - tap + hold: meh (ctrl + hold mod-morph)
+
+    From: https://github.com/urob/zmk-config/
+    */
+    /omit-if-no-ref/ ctrl_meh: ctrl_meh {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&sk LCTRL>, <&sk MEH>;
+      mods = <(MOD_LCTL)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: backspace
+    - hold: repeat backspace
+    - shift + tap: delete
+    - shift + hold: repeat delete
+
+    From: https://zmk.dev/docs/behaviors/mod-morph#advanced-configuration
+    */
+    /omit-if-no-ref/ bkspc_del: backspace_delete {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp BACKSPACE>, <&kp DELETE>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: brightness up
+    - hold: repeat brightness up
+    - shift + tap: brightness down
+    - shift + hold: repeat brightness down
+    */
+    /omit-if-no-ref/ brightness: brightness {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp C_BRI_UP>, <&kp C_BRI_DN>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: next track
+    - shift + tap: prev track
+    */
+    /omit-if-no-ref/ next_prev: next_prev {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp C_NEXT>, <&kp C_PREV>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: volume up
+    - shift + tap: volume down
+    */
+    /omit-if-no-ref/ volume: volume {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+      #binding-cells = <0>;
+    };
+
+    /*
+    - tap: reset keyboard
+    - hold: enter bootloader mode
+    */
+    /omit-if-no-ref/ rst_boot: rst_boot {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        tapping-term-ms = <500>;
+        flavor = "tap-preferred";
+        bindings = <&bootloader>, <&sys_reset>;
+    };
+  };
+};
+
