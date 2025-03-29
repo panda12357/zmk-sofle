@@ -283,7 +283,7 @@ layers:
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - AC COPY
   - PG UP
-  - {s: '&mmv'}
+  - {t: '$$mdi:arrow-up-bold$$', s: '$$mdi:menu-up$$'}
   - PG DN
   - AC PASTE
   - {t: ']', s: '}'}
@@ -295,9 +295,9 @@ layers:
   - {t: LGUI, h: '$$mdi:gesture-tap-hold$$'}
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - AC CUT
-  - {s: '&mmv'}
-  - {s: '&mmv'}
-  - {s: '&mmv'}
+  - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:menu-left$$'}
+  - {t: '$$mdi:arrow-down-bold$$', s: '$$mdi:menu-down$$'}
+  - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:menu-right$$'}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -312,7 +312,7 @@ layers:
   - $$mdi:mouse-right-click-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: \, s: '|'}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: toggle, h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -324,7 +324,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: toggle, h: toggle}
+  - {t: '$$mdi:transfer$$', type: trans}
   toggle:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
