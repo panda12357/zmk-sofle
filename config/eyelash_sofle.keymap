@@ -16,9 +16,10 @@
 #define GAME 1
 #define MIRROR 2
 #define NUM 3
-#define NAV 4
-#define NAV_MO 5
-#define NAV_TOG 6
+#define SYM 4
+#define NAV 5
+//#define NAV_MO 6
+//#define NAV_TOG 7
 
 // Meh key
 //#define MEH LS(LC(LALT))

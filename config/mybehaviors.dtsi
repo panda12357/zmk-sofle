@@ -2,10 +2,10 @@
 // Mouse
 &mmv_input_listener {
   input-processors = <&zip_xy_scaler 2 1>;  // default speed
-  precision {
-    layers = <NAV_MO>;
-    input-processors = <&zip_xy_scaler 1 2>;
-  };
+//  precision {
+//    layers = <NAV_MO>;
+//    input-processors = <&zip_xy_scaler 1 2>;
+//  };
 };
 
 &mmv {
@@ -16,10 +16,10 @@
 
 &msc_input_listener {
   input-processors = <&zip_scroll_scaler 2 1>;
-  precision {
-    layers = <NAV_MO>;
-    input-processors = <&zip_scroll_scaler 1 2>;
-  };
+//  precision {
+//    layers = <NAV_MO>;
+//    input-processors = <&zip_scroll_scaler 1 2>;
+//  };
 };
 
 &msc {
@@ -80,6 +80,14 @@
       bindings = <&mo>, <&tog>;
     };
 
+    /omit-if-no-ref/ key_tog: behavior_key_tog {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "hold-preferred";
+      tapping-term-ms = <200>;
+      bindings = <&kp>, <&tog>;
+    };
+/*
     /omit-if-no-ref/ nav_num_game: nav_num_game_tap_dance {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
@@ -93,6 +101,48 @@
       tapping-term-ms = <200>;
       bindings = <&mo_tog NAV_MO NAV>, <&tog NUM>, <&to BASE>;
     };
+*/
+    // omni_rep key
+    // base: repeat key (to decide for a hold behaviour, still repeat is fine
+    // +shift: capsword
+    // +ctrl: to base layer
+    // +alt: numpad layer
+    // +ralt: symbol layer
+    // +gui: game layer
+    // shift+alt: ???
+    // other: ???
+    /omit-if-no-ref/ omni_rep: omni_replay_shift {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&omni_c>, <&caps_word>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+      #binding-cells = <0>;
+    };
+    /omit-if-no-ref/ omni_c: omni_replay_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&omni_a>, <&to BASE>;
+      mods = <(MOD_LCTL|MOD_RCTL)>;
+      #binding-cells = <0>;
+    };
+    /omit-if-no-ref/ omni_a: omni_replay_alt {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&omni_r>, <&mo_tog NUM NUM>;
+      mods = <(MOD_LALT)>;
+      #binding-cells = <0>;
+    };
+    /omit-if-no-ref/ omni_r: omni_replay_ralt {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&omni_g>, <&mo_tog SYM SYM>;
+      mods = <(MOD_RALT)>;
+      #binding-cells = <0>;
+    };
+    /omit-if-no-ref/ omni_g: omni_replay_gui {
+      compatible = "zmk,behavior-mod-morph";
+      bindings = <&key_repeat>, <&tog GAME>;
+      mods = <(MOD_LGUI|MOD_RGUI)>;
+      #binding-cells = <0>;
+    };
+
+
 
     /*
     - tap: key_repeat

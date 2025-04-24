@@ -20,6 +20,11 @@
        53 54 55 56 57      59 60 61 62 63                          52
     */
 
+    COMBO(esc       , &kp ESC       , 16 17  , BASE     , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
+    COMBO(tab       , &kp TAB       , 42 43  , BASE     , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
+    COMBO(backspace , &kp BACKSPACE , 21 22  , BASE     , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
+    COMBO(enter     , &kp ENTER     , 22 23  , BASE     , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
+
     /* Function Keys */
     COMBO(f11      , &kp F11      , 0 1    , BASE     , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
     COMBO(f12      , &kp F12      , 1 2    , BASE     , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
@@ -52,7 +57,7 @@
     //COMBO(rbkt     , &kp RBKT     , 20 32  , BASE NAV, COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
     //COMBO(backslash, &kp BACKSLASH, 21 33  , BASE NAV, COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
     /* Bluetooth */
-    COMBO(bt_clear , &bt BT_CLR   , 1 2 3 4, NAV   , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
+    COMBO(bt_clear , &bt BT_CLR   , 1 2 3  , NAV   , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
     COMBO(bt_sel_0 , &bt BT_SEL 0 , 1 14   , NAV   , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
     COMBO(bt_sel_1 , &bt BT_SEL 1 , 2 15   , NAV   , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)
     COMBO(bt_sel_2 , &bt BT_SEL 2 , 3 16   , NAV   , COMBO_TERM_DEFAULT, COMBO_QUICK_TAP_MS)

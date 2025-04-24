@@ -1,31 +1,38 @@
 / {
+/*
     conditional_layers {
         compatible = "zmk,conditional-layers";
         nav_mo {
             if-layers = <NAV_MO>;
             then-layer = <NAV>;
         };
-//        nav_tog {
-//            if-layers = <NAV_TOG>;
-//            then-layer = <NAV>;
-//        };
+        nav_mol {
+            if-layers = <NAV_MOL>;
+            then-layer = <NAV>;
+        };
+        sym_mo {
+            if-layers = <NAV_MO NAV_MOL>;
+            then-layer = <SYM>;
+        };
         mouse {
             if-layers = <MOUSE>;
             then-layer = <NAV>;
         };
+*/
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+	// omni_rep - replay, symbols if held, capsword with shift + other with alt/ctrl/gui and combinations (tog layers, leader key and similar)
         base_layer {
             display-name = "Base";
             bindings = <
-&kp ESC     &th F1 N1     &th F2 N2     &th F3 N3       &th F4 N4       &th F5 N5           &kp UP_ARROW       &th F6 N6     &th F7 N7      &th F8 N8      &th F9 N9      &th F10 N0  &kp MINUS
-&kp TAB     &kp Q         &kp W         &kp E           &kp R           &kp T               &kp DOWN_ARROW     &kp Y         &kp U          &kp I          &kp O          &kp P       &kp LEFT_BRACKET
-&kp CAPS    &hrml RALT A  &hrml LALT S  &hrml LSHIFT D  &hrml LCTRL F   &hrml LGUI G        &kp LEFT_ARROW     &kp H         &kp J          &kp K          &kp L          &kp SEMI    &kp APOS
-&kp LSHFT   &kp Z         &kp X         &kp C           &kp V           &kp B               &kp RIGHT_ARROW    &hrmr RGUI N  &hrmr RCTRL M  &kp COMMA      &kp DOT        &kp FSLH    &hrmr RSHIFT ENTER
-&kp C_MUTE  &kp LCTRL     &kp LEFT_GUI  &kp LEFT_ALT    &mt LSHFT SPACE &lt NAV_MO ENTER    &kp ENTER          &rep_bk_del   &smart_rshift  &nav_num_game  &kp BACKSPACE  &kp DELETE
+&kp ESC         &th F1 N1     &th F2 N2     &th F3 N3       &th F4 N4       &th F5 N5            &kp UP_ARROW       &th F6 N6     &th F7 N7      &th F8 N8           &th F9 N9       &th F10 N0       &kp MINUS
+&kp TAB         &kp Q         &kp W         &kp E           &kp R           &kp T                &kp DOWN_ARROW     &kp Y         &kp U          &kp I               &kp O           &kp P            &kp LEFT_BRACKET
+&kp CAPS        &hrml RALT A  &hrml LALT S  &hrml LSHIFT D  &hrml LCTRL F   &hrml LGUI G         &kp LEFT_ARROW     &kp H         &kp J          &kp K               &kp L           &kp SEMI         &kp APOS
+&kp LSHFT       &kp Z         &kp X         &kp C           &kp V           &kp B                &kp RIGHT_ARROW    &hrmr RGUI N  &hrmr RCTRL M  &hrmr RSHIFT COMMA  &hrmr LALT DOT  &hrmr RALT FSLH  &hrmr RSHIFT ENTER
+&th C_MUTE C_PP &kp LCTRL     &kp LEFT_GUI  &lt NAV TAB     &lt SYM SPACE   &lt NAV ENTER        &kp ENTER          &omni_rep     &lt SYM SPACE  &mo_tog NAV NAV     &kp BACKSPACE   &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -34,11 +41,11 @@
         gaming_layer {
 	    display-name = "Gaming";
             bindings = <
-&trans  &trans  &trans     &trans    &trans     &trans           &trans  &trans  &trans  &trans         &trans  &trans  &trans
-&trans  &trans  &trans     &trans    &trans     &trans           &trans  &trans  &trans  &trans         &trans  &trans  &trans
-&trans  &kp A   &kp S      &kp D     &kp F      &kp G            &trans  &trans  &trans  &trans         &trans  &trans  &trans
-&trans  &trans  &trans     &trans    &trans     &trans           &trans  &trans  &trans  &trans         &trans  &trans  &trans
-&trans  &trans  &kp LCTRL  &kp LALT  &kp SPACE  &mo MIRROR       &trans  &trans  &trans  &nav_num_base  &trans  &trans
+&trans  &trans  &trans     &trans    &trans     &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans    &trans     &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp A   &kp S      &kp D     &kp F      &kp G            &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans    &trans     &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp LCTRL  &kp LALT  &kp SPACE  &mo MIRROR       &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -47,11 +54,11 @@
         mirror_layer {
 	    display-name = "Mirror";
             bindings = <
-&kp MINUS  &th F10 N0  &th F9 N9  &th F8 N8  &th F7 N7  &th F6 N6  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp P       &kp O      &kp I      &kp U      &kp Y      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp SEMI    &kp L      &kp K      &kp J      &kp H      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&kp ENTER  &kp FSLH    &kp DOT    &kp COMMA  &kp M      &kp N      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans      &trans     &trans     &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&kp MINUS  &th F10 N0  &th F9 N9      &th F8 N8  &th F7 N7  &th F6 N6  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp P       &kp O          &kp I      &kp U      &kp Y      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp SEMI    &kp L          &kp K      &kp J      &kp H      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp FSLH    &kp DOT        &kp COMMA  &kp M      &kp N      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp DELETE  &kp BACKSPACE  &kp RALT   &kp ENTER  &trans     &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -73,42 +80,45 @@
         keypad_layer {
 	    display-name = "Keypad";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp KP_NLCK  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp BACKSPACE  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp KP_N7    &kp KP_N8      &kp KP_N9        &kp KP_MINUS   &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp KP_N4    &kp KP_N5      &kp KP_N6        &kp KP_PLUS    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp KP_N1    &kp KP_N2      &kp KP_N3        &kp KP_ENTER   &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &sk RALT     &kp KP_N0      &trans           &kp KP_DOT     &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp LS(N6)         &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp LS(N9)  &kp LS(N0)        &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp KP_DIVIDE      &kp KP_N7      &kp KP_N8        &kp KP_N9   &kp KP_MINUS  &kp TAB
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp KP_MULTIPLY    &kp KP_N4      &kp KP_N5        &kp KP_N6   &kp KP_PLUS   &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp KP_NLCK        &kp KP_N1      &kp KP_N2        &kp KP_N3   &kp KP_ENTER  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &key_tog RALT NUM  &kp RSHIFT     &kp KP_N0        &trans      &kp KP_DOT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
         };
 
-	// Functions and arrows together, with also keys for copy/paste
-	// ijkl - arrows
-	// u -> page up
-	// o -> page down
-	// y - copy (yank like vim)
-	// p - paste
-	// h - cut
-	// n - undo long press redo (hoping it works) todo
-	// m and . - home and end
-	// , - toggle mouse mode
-
-        navigation_function_layer {
-	    display-name = "Move";
+        symbols_layer {
+	    display-name = "Sym";
             bindings = <
-&kp GRAVE   &kp F1    &kp F2    &kp F3      &kp F4     &kp F5             &mmv MOVE_UP       &kp F6                   &kp F7     &kp F8      &kp F9     &kp F10         &kp EQUAL
-&trans      &kp F11   &kp F12   &kp PSCRN   &kp SLCK   &kp PAUSE_BREAK    &mmv MOVE_DOWN     &kp C_AC_COPY            &kp PG_UP  &kp UP      &kp PG_DN  &kp C_AC_PASTE  &kp RIGHT_BRACKET
-&trans      &sk RALT  &sk LALT  &sk LSHIFT  &sk LCTRL  &sk LGUI           &mmv MOVE_LEFT     &kp C_AC_CUT             &kp LEFT   &kp DOWN    &kp RIGHT  &trans          &trans
-&trans      &trans    &trans    &trans      &trans     &trans             &mmv MOVE_RIGHT    &th C_AC_REDO C_AC_UNDO  &kp HOME   &tog MOUSE  &kp END    &kp BSLH        &trans
-&trans      &trans    &trans    &trans      &trans     &trans             &mkp LCLK          &trans                   &trans     &trans      &trans     &kp INSERT
+&trans       &trans         &trans         &trans           &trans          &trans           &mmv MOVE_DOWN     &trans         &trans          &trans            &trans             &trans          &kp EQUAL 
+&th F11 TAB  &th F1 LS(N1)  &th F2 LS(N2)  &th F3 LS(N3)    &th F4 LS(N4)   &th F5 LS(N5)    &mmv MOVE_UP       &th F6 LS(N6)  &th F7 LS(N7)   &th F8 LS(N8)     &th F9 LS(N9)      &th F10 LS(N0)  &th F12 RIGHT_BRACKET
+&trans       &hrml RALT N1  &hrml LALT N2  &hrml LSHIFT N3  &hrml LCTRL N4  &hrml LGUI N5    &mmv MOVE_LEFT     &hrmr RGUI N6  &hrmr RCTRL N7  &hrmr RSHIFT N8   &hrmr LALT N9      &hrmr RALT N0   &trans
+&trans       &trans         &kp GRAVE      &kp MINUS        &kp EQUAL       &kp F11          &mmv MOVE_RIGHT    &kp F12        &kp APOS        &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BSLH        &trans
+&trans       &trans         &trans         &trans           &trans          &trans           &mkp LCLK          &trans         &trans          &trans            &trans             &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
         };
+
+        navigation_layer {
+	    display-name = "Nav";
+            bindings = <
+&trans  &trans           &trans    &trans      &trans     &trans      &mmv MOVE_UP       &trans      &trans         &trans      &trans      &trans     &trans
+&trans  &kp PAUSE_BREAK  &kp SLCK  &kp PSCRN   &kp CAPS   &trans      &mmv MOVE_DOWN     &kp INSERT  &kp PG_UP      &kp UP      &kp PG_DN   &kp HOME   &trans
+&trans  &sk RALT         &sk LALT  &sk LSHIFT  &sk LCTRL  &sk LGUI    &mmv MOVE_LEFT     &kp ESC     &kp LEFT       &kp DOWN    &kp RIGHT   &kp END    &trans
+&trans  &trans           &trans    &trans      &trans     &trans      &mmv MOVE_RIGHT    &kp TAB     &kp BACKSPACE  &kp INSERT  &kp DELETE  &kp ENTER  &trans
+&trans  &trans           &trans    &trans      &trans     &trans      &mkp LCLK          &trans      &kp RSHIFT     &trans      &trans      &trans
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+        };
+/*
         nav_mo_layer {
 	    // Empty layer to allow lower layer to be turned sticky from temporary
-	    display-name = "Move";
+	    display-name = "Nav";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
@@ -119,8 +129,23 @@
 
             sensor-bindings = <&scroll_encoder>;
         };
+*/
+/*
+        nav_mor_layer {
+	    // Empty layer to allow lower layer to be turned sticky from temporary
+	    display-name = "Nav";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
+            >;
 
-
+            sensor-bindings = <&scroll_encoder>;
+        };
+*/
+/*
         mouse_layer {
 	    // Mouse layer
 	    display-name = "Mouse";
@@ -134,6 +159,7 @@
 
             sensor-bindings = <&scroll_encoder>;
         };
+*/
 
 /*
         nav_tog_layer {
