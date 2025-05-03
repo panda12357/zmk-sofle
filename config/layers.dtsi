@@ -93,11 +93,11 @@
         symbols_layer {
 	    display-name = "Sym";
             bindings = <
-&trans       &trans         &trans         &trans           &trans          &trans           &mmv MOVE_DOWN     &trans         &trans          &trans            &trans             &trans          &kp EQUAL 
-&th F11 TAB  &th F1 LS(N1)  &th F2 LS(N2)  &th F3 LS(N3)    &th F4 LS(N4)   &th F5 LS(N5)    &mmv MOVE_UP       &th F6 LS(N6)  &th F7 LS(N7)   &th F8 LS(N8)     &th F9 LS(N9)      &th F10 LS(N0)  &th F12 RIGHT_BRACKET
-&trans       &hrml RALT N1  &hrml LALT N2  &hrml LSHIFT N3  &hrml LCTRL N4  &hrml LGUI N5    &mmv MOVE_LEFT     &hrmr RGUI N6  &hrmr RCTRL N7  &hrmr RSHIFT N8   &hrmr LALT N9      &hrmr RALT N0   &trans
-&trans       &trans         &kp GRAVE      &kp MINUS        &kp EQUAL       &kp F11          &mmv MOVE_RIGHT    &kp F12        &kp APOS        &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BSLH        &trans
-&trans       &trans         &trans         &trans           &trans          &trans           &mkp LCLK          &trans         &trans          &trans            &trans             &trans
+&trans       &trans         &trans         &trans           &trans          &trans           &mmv MOVE_DOWN     &trans          &trans            &trans                     &trans                    &trans           &kp EQUAL 
+&th F11 TAB  &th F1 LS(N1)  &th F2 LS(N2)  &th F3 LS(N3)    &th F4 LS(N4)   &th F5 LS(N5)    &mmv MOVE_UP       &th F6 LS(N6)   &th F7 LS(N7)     &th F8 LS(N8)              &th F9 LS(N9)             &th F10 LS(N0)   &th F12 RIGHT_BRACKET
+&trans       &hrml RALT N1  &hrml LALT N2  &hrml LSHIFT N3  &hrml LCTRL N4  &hrml LGUI N5    &mmv MOVE_LEFT     &kp N6          &kp N7            &kp N8                     &kp N9                    &kp N0           &trans
+&trans       &trans         &kp GRAVE      &kp MINUS        &kp EQUAL       &kp F11          &mmv MOVE_RIGHT    &hrmr RGUI F12  &hrmr RCTRL APOS  &hrmr RSHIFT LEFT_BRACKET  &hrmr LALT RIGHT_BRACKET  &hrmr RALT BSLH  &trans
+&trans       &trans         &trans         &trans           &trans          &trans           &mkp LCLK          &trans          &trans            &trans                     &trans                    &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
