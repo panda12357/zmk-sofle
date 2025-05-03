@@ -294,11 +294,11 @@ layers:
   - {t: '4', h: '$$mdi:apple-keyboard-control$$', s: $}
   - {t: '5', h: LGUI, s: '%'}
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
-  - {t: '6', h: RGUI, s: ^}
-  - {t: '7', h: '$$mdi:apple-keyboard-control$$', s: '&'}
-  - {t: '8', h: '$$mdi:apple-keyboard-shift$$', s: '*'}
-  - {t: '9', h: '$$mdi:apple-keyboard-option$$', s: (}
-  - {t: '0', h: '$$mdi:apple-keyboard-option$$', s: )}
+  - {t: '6', s: ^}
+  - {t: '7', s: '&'}
+  - {t: '8', s: '*'}
+  - {t: '9', s: (}
+  - {t: '0', s: )}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -307,11 +307,11 @@ layers:
   - {t: '=', s: +}
   - F11
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
-  - F12
-  - {t: '''', s: '"'}
-  - {t: '[', s: '{'}
-  - {t: ']', s: '}'}
-  - {t: \, s: '|'}
+  - {t: F12, h: RGUI}
+  - {t: '''', h: '$$mdi:apple-keyboard-control$$', s: '"'}
+  - {t: '[', h: '$$mdi:apple-keyboard-shift$$', s: '{'}
+  - {t: ']', h: '$$mdi:apple-keyboard-option$$', s: '}'}
+  - {t: \, h: '$$mdi:apple-keyboard-option$$', s: '|'}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
