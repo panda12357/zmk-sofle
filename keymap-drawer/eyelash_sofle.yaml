@@ -56,7 +56,7 @@ layers:
   - {t: '$$mdi:play-pause$$', h: '$$mdi:volume-off$$'}
   - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-command$$
-  - {t: '$$mdi:keyboard-tab$$', h: Nav}
+  - {t: '$$mdi:keyboard-tab$$', h: '$$mdi:apple-keyboard-option$$'}
   - {t: '$$mdi:keyboard-space$$', h: Sym}
   - {t: '$$mdi:keyboard-return$$', h: Nav}
   - {t: '$$mdi:keyboard-return$$', type: enter}
@@ -381,9 +381,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {type: held alternate}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {type: held}
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:apple-keyboard-shift$$
@@ -448,12 +448,30 @@ combos:
 - p: [11, 24]
   k: )
   l: [Base]
+- p: [21, 34]
+  k: {h: '-', s: _}
+  l: [Base]
+- p: [34, 47]
+  k: {h: '=', s: +}
+  l: [Base]
 - p: [20, 33]
   k: PG UP
   l: [Base, Nav]
 - p: [33, 46]
   k: PG DN
   l: [Base, Nav]
+- p: [35, 48]
+  k: {h: '[', s: '{'}
+  l: [Base]
+- p: [36, 49]
+  k: {h: ']', s: '}'}
+  l: [Base]
+- p: [37, 50]
+  k: {h: \, s: '|'}
+  l: [Base]
+- p: [24, 37]
+  k: {t: '''', s: '"'}
+  l: [Base]
 - p: [1, 2, 3]
   k: $$mdi:bluetooth-off$$
   l: [Nav]
