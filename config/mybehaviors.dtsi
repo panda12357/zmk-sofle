@@ -103,13 +103,14 @@
     };
 */
     // omni_rep key
-    // base: repeat key (to decide for a hold behaviour, still repeat is fine
+    // issue: triggers the press of the mod key, so it shows menu bar in firefox with alt and the application menu with gui
+    // base: repeat key
     // +shift: capsword
     // +ctrl: to base layer
-    // +alt: numpad layer
-    // +ralt: symbol layer
+    // +alt: symbol layer
+    // +ralt: numpad layer
     // +gui: game layer
-    // shift+alt: ???
+    // shift+ralt: ???
     // other: ???
     /omit-if-no-ref/ omni_rep: omni_replay_shift {
       compatible = "zmk,behavior-mod-morph";
@@ -125,13 +126,13 @@
     };
     /omit-if-no-ref/ omni_a: omni_replay_alt {
       compatible = "zmk,behavior-mod-morph";
-      bindings = <&omni_r>, <&mo_tog NUM NUM>;
+      bindings = <&omni_r>, <&mo_tog SYM SYM>;
       mods = <(MOD_LALT)>;
       #binding-cells = <0>;
     };
     /omit-if-no-ref/ omni_r: omni_replay_ralt {
       compatible = "zmk,behavior-mod-morph";
-      bindings = <&omni_g>, <&mo_tog SYM SYM>;
+      bindings = <&omni_g>, <&mo_tog NUM NUM>;
       mods = <(MOD_RALT)>;
       #binding-cells = <0>;
     };
