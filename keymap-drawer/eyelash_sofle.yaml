@@ -56,7 +56,7 @@ layers:
   - {t: '$$mdi:play-pause$$', h: '$$mdi:volume-off$$'}
   - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-command$$
-  - {t: '$$mdi:keyboard-tab$$', h: '$$mdi:apple-keyboard-option$$'}
+  - $$mdi:apple-keyboard-option$$
   - {t: '$$mdi:keyboard-space$$', h: Sym}
   - {t: '$$mdi:keyboard-return$$', h: Nav}
   - {t: '$$mdi:keyboard-return$$', type: enter}
@@ -393,10 +393,13 @@ layers:
 combos:
 - p: [16, 17]
   k: $$mdi:keyboard-esc$$
-  l: [Base]
+  l: [Base, Nav, Keypad]
 - p: [42, 43]
   k: $$mdi:keyboard-tab$$
-  l: [Base]
+  l: [Base, Nav, Keypad]
+- p: [14, 15]
+  k: {t: '`', s: '~'}
+  l: [Base, Nav, Keypad]
 - p: [21, 22]
   k: {t: '$$mdi:backspace$$', type: backspace}
   l: [Base]
